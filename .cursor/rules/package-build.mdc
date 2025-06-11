@@ -1,0 +1,44 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+You are contributing to the Onoal Token Library (OTL), a modular and scalable Move-based package built for the Sui blockchain. The OTL defines various token types — such as collectible NFTs, utility tokens, event tickets, and loyalty tokens — each designed to work seamlessly across different use cases in the Onoal ecosystem.
+
+This prompt focuses on **creating a wrapper token around the Sui Coin standard**.
+
+### Goals
+
+- Build a **modular, reusable wrapper** around Sui's `Coin<T>` type.
+- This wrapper will serve as the **foundation** for all token types in the OTL that require fungibility, pricing, supply management, and metadata.
+- Ensure **full compatibility** with Sui’s `Coin` mechanisms (e.g. TreasuryCap, coin transfer, burning).
+- Add extensible **metadata** to each wrapped token type, including on-chain (fixed) and optional off-chain (hosted) metadata such as IPFS or cloud URLs.
+- Include a fixed price and a max supply cap.
+- Only the `issuer` (e.g. the deploying company or ecosystem partner) can mint or burn tokens.
+- Include strict checks and reusable validation logic using a shared `otl::utils` module.
+- All error codes and constants are defined in a shared `otl::base` module.
+
+### Design Principles
+
+- **Composable & Extensible**: The wrapper should allow future extensions such as fee mechanisms, event emission, or integration with the Sui Kiosk framework.
+- **Standardized Metadata**: Every token must store standardized metadata including:
+  - `name`: e.g., "Onoal Utility Token"
+  - `description`: short description of the token's purpose
+  - `external_uri`: pointer to JSON metadata (e.g., IPFS or HTTPS)
+- **Safe Minting**: Minting must respect the supply cap and must only be allowed by the designated `issuer`.
+- **Safe Burning**: Only the issuer can burn tokens. Burned supply should be tracked optionally if needed later.
+
+### Upcoming Modules
+
+- `otl::utility_token`: A fungible token based on `Coin<T>`, sold at a fixed price and usable in partner ecosystems as a form of digital cash or utility.
+- `otl::collectible`: Non-fungible tokens with metadata and optional Kiosk support.
+- `otl::ticket`: Time-based or access-based NFT tickets.
+- `otl::loyalty`: Reputation or point-based reward tokens.
+
+---
+
+You are now about to implement the foundational wrapper module for a utility-style coin. Use idiomatic Sui Move patterns. Use `Coin::mint`, `Coin::burn`, and `Coin::value` from `sui::coin`. The token metadata and state should be encapsulated in a resource struct that also includes a `TreasuryCap<T>`.
+
+Any reusable checks (e.g., address is owner, string length validation, etc.) should be abstracted into `utils.move`. Error codes should reference constants in `base.move`.
+
+The module should be clean, minimal, and optimized for future extension.
