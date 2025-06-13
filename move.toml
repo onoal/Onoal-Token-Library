@@ -1,7 +1,9 @@
 [package]
-name = "otl"
+name = "onoal-token-library"
 version = "0.0.1"
 edition = "2024"
+authors = ["Onoal Team"]
+published-at = "0x3175c9d95270ede9da98f9b914ef78dc42fe1fec3cb2081cccbb08461c5c1bdf"
 
 [dependencies]
 Sui = { git = "https://github.com/MystenLabs/sui.git", subdir = "crates/sui-framework/packages/sui-framework", rev = "devnet" }
