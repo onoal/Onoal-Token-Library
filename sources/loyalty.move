@@ -1,4 +1,4 @@
-#[allow(unused_const, duplicate_alias)]
+#[allow(unused_const, duplicate_alias, lint(self_transfer))]
 module otl::loyalty;
 
 use otl::base;

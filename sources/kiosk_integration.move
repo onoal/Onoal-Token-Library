@@ -1,4 +1,15 @@
-#[allow(unused_const, duplicate_alias)]
+#[
+    allow(
+        unused_const,
+        duplicate_alias,
+        unused_use,
+        unused_field,
+        unused_variable,
+        lint(
+            self_transfer,
+        ),
+    ),
+]
 module otl::kiosk_integration;
 
 use otl::base;
@@ -584,7 +595,7 @@ public fun list_token_wallet_on_platform_kiosk(
     assert!(price_per_token > 0, base::invalid_amount_error());
 
     let wallet_id = object::id(&token_wallet);
-    let (_, _, balance, _, _) = otl_coin::get_wallet_info(&token_wallet);
+    let (_, _, balance, _) = otl_coin::get_wallet_info(&token_wallet);
     let total_price = balance * price_per_token;
 
     // Calculate fees

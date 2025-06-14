@@ -1,4 +1,5 @@
-#[test_only, allow(unused_use, duplicate_alias)]
+#[allow(unused_const, unused_variable)]
+#[test_only]
 module otl::kiosk_integration_tests;
 
 use otl::coin::{Self, UtilityTokenRegistry, TokenType, TokenWallet};

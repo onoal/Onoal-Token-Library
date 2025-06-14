@@ -1,4 +1,4 @@
-#[allow(duplicate_alias, deprecated_usage)]
+#[allow(duplicate_alias, deprecated_usage, unused_use)]
 module otl::utils;
 
 use otl::base;

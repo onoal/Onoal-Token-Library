@@ -1,4 +1,5 @@
-#[test_only, allow(unused_use, duplicate_alias)]
+#[allow(unused_variable)]
+#[test_only]
 module otl::ticket_tests;
 
 use otl::ticket::{Self, Event, Ticket, TICKET};
